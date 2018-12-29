@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+
+<style type="text/css">
+    body {
+        font-family: Arial;
+        font-size: 14pt;
+        text-align: left;
+        color: gray;
+        background-color: black;
+    }
+    table, th, td {
+        font-family: Arial;
+        font-size: 14pt;
+        text-align: center;
+        vertical-align: center;
+        border: 1px hidden black;
+        border-collapse: collapse;
+        color: gray;
+        padding: 3px;
+    }
+    .sat, .sun {
+        color: gray;
+    }
+    .time {
+        font-size: 24pt;
+        font-weight: bold;
+        padding-bottom: 5px;
+    }
+    .date {
+        font-size: 20pt;
+        font-weight: bold;
+        padding-bottom: 5px;
+    }
+</style>
+
+<head>
+    <title>Board</title>
+    <meta http-equiv="refresh" content="60">
+    <meta charset="UTF-8">
+</head>
+
+<script type="text/javascript">
+    function prepareDate()
+    {
+        var d = new Date();
+        var hours = d.getHours();
+        var minutes = d.getMinutes();
+        var seconds = d.getSeconds();
+        var date = d.getDate();
+
+        var weekday_num = d.getDay() + 1;
+        var month_num = d.getMonth() + 1;
+
+        var weekday=new Array(7);
+        weekday[1]="Воскресенье";
+        weekday[2]="Понедельник";
+        weekday[3]="Вторник";
+        weekday[4]="Среда";
+        weekday[5]="Четверг";
+        weekday[6]="Пятница";
+        weekday[7]="Суббота";
+        var weekday_human = weekday[weekday_num];
+
+        var month=new Array(12);
+        month[1]="Января";
+        month[2]="Февраля";
+        month[3]="Марта";
+        month[4]="Апреля";
+        month[5]="Майя";
+        month[6]="Июня";
+        month[7]="Июля";
+        month[8]="Августа";
+        month[9]="Сентября";
+        month[10]="Октября";
+        month[11]="Ноября";
+        month[12]="Декабря";
+        var month_human = month[month_num];
+
+        if(hours < 10)
+        {
+            hours = '0' + hours;
+        }
+        if(minutes < 10)
+        {
+            minutes = '0' + minutes;
+        }
+        if(seconds < 10)
+        {
+            seconds = '0' + seconds;
+        }
+
+        document.getElementById('timedisplay').innerHTML =
+            // "<div class='time'>" + hours + ':' + minutes + ':' + seconds + "</div>"
+            // + "<br>"
+            "<div class='date'>" + date + " " + month_human + " (" + month_num + ") " + ", " + weekday_human  + "</div>"
+        ;
+    }
+    setInterval(prepareDate, 500);
+</script>
+
+<body>
+
+<table style="text-align: center; width: 100%;">
+    <tbody>
+        <tr align="center">
+            <td colspan="2" rowspan="1">
+                <div id="timedisplay"></div>
+            </td>
+        </tr>
+        <tr align="center">
+            <td colspan="2" rowspan="1">
+                <img style="width: 70px; height: 70px;" alt="weather_icon" src="{{ WEATHER_CURRENT.icon }}"><br>
+                <b>{{ WEATHER_CURRENT.condition }}, {{ WEATHER_CURRENT.temp }}&deg</b><br>
+                Ощущается как {{ WEATHER_CURRENT.feels_like }}&deg<br>
+                Давление {{ WEATHER_CURRENT.pressure_mm }} мм рт.ст.<br>
+                Влажность {{ WEATHER_CURRENT.humidity }} %<br>
+                Ветер {{ WEATHER_CURRENT.wind_speed }} м/с порывами до {{ WEATHER_CURRENT.wind_gust }} м/с, {{ WEATHER_CURRENT.wind_dir }}<br>
+                <small><i>(Обновлено в {{ LAST_UPD.upd_time }})</i></small>
+            </td>
+        </tr>
+        <tr>
+        {% for PART in WEATHER_FORECAST.parts %}
+            <td>
+                <b>{{ PART.part_name }}</b><br>
+                <img style="width: 50px; height: 50px;" alt="weather_icon" src="{{ PART.icon }}"><br>
+                <b>{{ PART.condition }}, {{ PART.feels_like }}&deg</b><br>
+                <!--Ощущается как {{ PART.feels_like }}&deg<br>-->
+                <!--Давление {{ PART.pressure_mm }} мм рт.ст.<br>-->
+                <!--Влажность {{ PART.humidity }} %<br>-->
+                Ветер {{ PART.wind_speed }} м/с (до {{ PART.wind_gust }} м/с)
+            </td>
+        {% endfor %}
+        </tr>
+
+        <tr>
+            <td colspan="2" rowspan="1">
+                <table style="margin-left: auto; margin-right: auto;">
+                <tbody>
+                    <tr align="center">
+                        <td style="vertical-align: middle;">
+                            <img style="width: 30px; height: 30px;" alt="sunrise" src="sunrise_gr.png">
+                        </td>
+                        <td style="vertical-align: middle;">
+                            {{ WEATHER_FORECAST.sunrise }} <i>--- {{ WEATHER_FORECAST.day_length }} ---</i> {{ WEATHER_FORECAST.sunset }}
+                        </td>
+                        <td style="vertical-align: middle;">
+                            <img style="width: 30px; height: 30px;" alt="sunrise" src="sunset_gr.png">
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+                <small><i>{{ WEATHER_FORECAST.moon_text }}</i></small>
+        </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,76 @@
+{
+    "fact": {
+        "condition": "cloudy", 
+        "daytime": "n", 
+        "feels_like": 14, 
+        "humidity": 43, 
+        "icon": "bkn_n", 
+        "obs_time": 1536774241, 
+        "polar": false, 
+        "pressure_mm": 749, 
+        "pressure_pa": 999, 
+        "season": "autumn", 
+        "temp": 20, 
+        "wind_dir": "s", 
+        "wind_gust": 13, 
+        "wind_speed": 7
+    }, 
+    "forecast": {
+        "date": "2018-09-13", 
+        "date_ts": 1536786000, 
+        "moon_code": 10, 
+        "moon_text": "growing-moon", 
+        "parts": [
+            {
+                "condition": "overcast", 
+                "daytime": "n", 
+                "feels_like": 14, 
+                "humidity": 66, 
+                "icon": "ovc", 
+                "part_name": "night", 
+                "polar": false, 
+                "prec_mm": 0, 
+                "prec_period": 360, 
+                "prec_prob": 0, 
+                "pressure_mm": 748, 
+                "pressure_pa": 998, 
+                "temp_avg": 18, 
+                "temp_max": 18, 
+                "temp_min": 17, 
+                "wind_dir": "sw", 
+                "wind_gust": 14.5, 
+                "wind_speed": 5.8
+            }, 
+            {
+                "condition": "overcast-and-light-rain", 
+                "daytime": "d", 
+                "feels_like": 14, 
+                "humidity": 74, 
+                "icon": "ovc_-ra", 
+                "part_name": "morning", 
+                "polar": false, 
+                "prec_mm": 1.2, 
+                "prec_period": 360, 
+                "prec_prob": 80, 
+                "pressure_mm": 747, 
+                "pressure_pa": 996, 
+                "temp_avg": 18, 
+                "temp_max": 19, 
+                "temp_min": 17, 
+                "wind_dir": "sw", 
+                "wind_gust": 13.9, 
+                "wind_speed": 6.6
+            }
+        ], 
+        "sunrise": "05:30", 
+        "sunset": "18:27", 
+        "week": 37
+    }, 
+    "info": {
+        "lat": 56.284127, 
+        "lon": 44.070468, 
+        "url": "https://yandex.com/pogoda/?lat=56.284127&lon=44.070468"
+    }, 
+    "now": 1536775939, 
+    "now_dt": "2018-09-12T18:12:19.720Z"
+}

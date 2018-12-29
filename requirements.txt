@@ -1,0 +1,4 @@
+# python -m pip install -U pip; python -m pip install -U setuptools
+# python -m pip install -U -r requirements.txt
+requests
+Jinja2
