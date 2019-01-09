@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 condition_map = {
     'clear':                            u'Ясно',
     'partly-cloudy':                    u'Малооблачно',
