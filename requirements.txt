@@ -1,8 +1,8 @@
 requests
 Jinja2
 attrs
+pyyaml
 
 isort
 pylint
 black
-

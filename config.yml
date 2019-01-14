@@ -1,0 +1,16 @@
+files:
+  html_template_file: srs/html/page_template.html
+  html_rendered_file: page_rendered.html
+  weather_json_file: srs/json/resp_last.json
+
+yandex:
+  # https://developer.tech.yandex.ru
+  key: ...
+  # coordinates of place
+  coordinates:
+    lat: 56.284_127
+    lon: 44.070_468
+  # weather on site
+  url: https://api.weather.yandex.ru/v1/informers
+  # blueye style
+  icon_url: https://yastatic.net/weather/i/icons/blueye/color/svg/{icon}.svg

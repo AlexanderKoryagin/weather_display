@@ -6,43 +6,41 @@ from datetime import datetime
 from time import sleep
 
 import requests
+import yaml
 from jinja2 import Template
 
-# from structures import TimeCurrent
 from srs.structures import TimeLastUpdate
 from srs.structures import WeatherCurrent
 from srs.structures import WeatherForecast
 from srs.structures import WeatherForecastPart
-# from translation import month_map
-# from translation import day_of_week_map
 from srs.translation import condition_map
 from srs.translation import daytime_map
 from srs.translation import moon_code_map
 from srs.translation import wind_dir_map
 
 
-key = "..."  # https://developer.tech.yandex.ru
+def read_config():
+    cfg_file = "config.yml"
+    with open(cfg_file, "r") as filo:
+        config = yaml.load(filo)
+    return config
 
-url = "https://api.weather.yandex.ru/v1/informers"  # weather on site
-icon_url = "https://yastatic.net/weather/i/icons/blueye/color/svg/{icon}.svg"
-coordinates = {"lat": 56.284_127, "lon": 44.070_468}
-weather_json_file = "srs/json/resp_last.json"
-html_template_file = "srs/html/page_template.html"
-html_rendered_file = "page_rendered.html"
+
+CONFIG = read_config()
 
 
 def get_weather():
-    headers = {"X-Yandex-API-Key": key}
+    headers = {"X-Yandex-API-Key": CONFIG["yandex"]["key"]}
     payload = {"lang": "en_US"}
-    payload.update(coordinates)
+    payload.update(CONFIG["yandex"]["coordinates"])
     # get data
-    resp = requests.get(url, params=payload, headers=headers)
+    resp = requests.get(CONFIG["yandex"]["url"], params=payload, headers=headers)
     resp_json = resp.json()
 
     if not resp.ok:
         raise Exception(f'Can not get "{resp.url}". Reason: {resp.reason} ({resp.status_code})')
 
-    with open(weather_json_file, "w") as fileo:
+    with open(CONFIG["files"]["weather_json_file"], "w") as fileo:
         fileo.write(json.dumps(resp_json, indent=4, sort_keys=True))
     return resp_json
 
@@ -59,14 +57,14 @@ def translate(value, mapping):
 
 
 def template_read():
-    with open(html_template_file, "r", encoding='utf-8') as fileo:
+    with open(CONFIG["files"]["html_template_file"], "r", encoding="utf-8") as fileo:
         template_content = fileo.read()
     template = Template(template_content)
     return template
 
 
 def template_render(template, **kwargs):
-    with open(html_rendered_file, "w", encoding='utf-8') as fileo:
+    with open(CONFIG["files"]["html_rendered_file"], "w", encoding="utf-8") as fileo:
         rendered_template = template.render(**kwargs)
         fileo.write(rendered_template)
 
@@ -87,7 +85,7 @@ def prepare_weather_current(fact):
         wind_speed=fact["wind_speed"],
         wind_gust=fact["wind_gust"],
         wind_dir=translate(fact["wind_dir"], wind_dir_map),
-        icon=icon_url.format(icon=fact["icon"]),
+        icon=CONFIG["yandex"]["icon_url"].format(icon=fact["icon"]),
     )
     return result
 
@@ -108,7 +106,7 @@ def prepare_weather_forecast(forecast):
                 condition=translate(part["condition"], condition_map),
                 feels_like=temp_convert(part["feels_like"]),
                 humidity=part["humidity"],
-                icon=icon_url.format(icon=part["icon"]),
+                icon=CONFIG["yandex"]["icon_url"].format(icon=part["icon"]),
                 part_name=translate(part["part_name"], daytime_map),
                 pressure_mm=part["pressure_mm"],
                 temp_avg=temp_convert(part["temp_avg"]),
@@ -146,5 +144,5 @@ if __name__ == "__main__":
 
     while True:
         main()
+        # break
         sleep(30 * 60)
-        # exit(0)
