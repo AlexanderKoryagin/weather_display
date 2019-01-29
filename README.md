@@ -22,3 +22,8 @@ python -m pip install -U -r requirements.txt
 
 ## More info:
 https://tech.yandex.ru/weather/doc/dg/concepts/forecast-response-test-docpage
+
+### Ignore API KEY file 
+```bash
+git update-index --assume-unchanged api_key.yml
+```
