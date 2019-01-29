@@ -1,19 +1,19 @@
 {
     "fact": {
         "condition": "overcast",
-        "daytime": "d",
+        "daytime": "n",
         "feels_like": -14,
-        "humidity": 84,
+        "humidity": 77,
         "icon": "ovc",
-        "obs_time": 1548751589,
+        "obs_time": 1548768685,
         "polar": false,
         "pressure_mm": 754,
         "pressure_pa": 1006,
         "season": "winter",
         "temp": -9,
-        "wind_dir": "se",
-        "wind_gust": 5,
-        "wind_speed": 3
+        "wind_dir": "s",
+        "wind_gust": 4.2,
+        "wind_speed": 2
     },
     "forecast": {
         "date": "2019-01-29",
@@ -29,22 +29,22 @@
                 "icon": "ovc_-sn",
                 "part_name": "evening",
                 "polar": false,
-                "prec_mm": 0.5,
+                "prec_mm": 0.4,
                 "prec_period": 360,
                 "prec_prob": 70,
                 "pressure_mm": 754,
                 "pressure_pa": 1006,
                 "temp_avg": -8,
                 "temp_max": -8,
-                "temp_min": -9,
+                "temp_min": -8,
                 "wind_dir": "se",
                 "wind_gust": 6,
-                "wind_speed": 2.7
+                "wind_speed": 2.6
             },
             {
                 "condition": "overcast-and-light-snow",
                 "daytime": "n",
-                "feels_like": -14,
+                "feels_like": -13,
                 "humidity": 88,
                 "icon": "ovc_-sn",
                 "part_name": "night",
@@ -52,14 +52,14 @@
                 "prec_mm": 0.6,
                 "prec_period": 360,
                 "prec_prob": 70,
-                "pressure_mm": 754,
-                "pressure_pa": 1006,
-                "temp_avg": -9,
-                "temp_max": -9,
-                "temp_min": -10,
+                "pressure_mm": 755,
+                "pressure_pa": 1007,
+                "temp_avg": -8,
+                "temp_max": -8,
+                "temp_min": -9,
                 "wind_dir": "se",
                 "wind_gust": 4.6,
-                "wind_speed": 2.6
+                "wind_speed": 2.4
             }
         ],
         "sunrise": "08:06",
@@ -71,6 +71,6 @@
         "lon": 44.070468,
         "url": "https://yandex.com/pogoda/?lat=56.284127&lon=44.070468"
     },
-    "now": 1548752405,
-    "now_dt": "2019-01-29T09:00:05.975Z"
+    "now": 1548769979,
+    "now_dt": "2019-01-29T13:52:59.906Z"
 }

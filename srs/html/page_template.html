@@ -112,11 +112,13 @@
                 <span style="font-weight: bold; font-size:30px">{{ WEATHER_CURRENT.condition }}</span>
                 <br>
                 Ощущается как {{ WEATHER_CURRENT.feels_like }}&deg<br>
-                Давление {{ WEATHER_CURRENT.pressure_mm }} мм рт.ст.<br>
-                Влажность {{ WEATHER_CURRENT.humidity }} %<br>
-                Ветер {{ WEATHER_CURRENT.wind_speed }} м/с порывами до {{ WEATHER_CURRENT.wind_gust }} м/с, {{ WEATHER_CURRENT.wind_dir }}<br>
                 <small><i>(Обновлено в {{ LAST_UPD.upd_time }})</i></small>
                 <br>
+                <br>
+                Давление {{ WEATHER_CURRENT.pressure_mm }} мм рт.ст.
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                Влажность {{ WEATHER_CURRENT.humidity }} %<br>
+                Ветер {{ WEATHER_CURRENT.wind_speed }} м/с порывами до {{ WEATHER_CURRENT.wind_gust }} м/с, {{ WEATHER_CURRENT.wind_dir }}<br>
                 <br>
             </td>
         </tr>
@@ -125,7 +127,7 @@
             <td>
                 <b>{{ PART.part_name }}</b><br>
                 <img style="width: 50px; height: 50px;" alt="weather_icon" src="{{ PART.icon }}">&nbsp;
-                <span style="font-size:25px;">{{ PART.feels_like }}&deg</span><br>
+                <span style="font-size:25px;">{{ PART.temp_avg }}&deg</span><br>
                 <b>{{ PART.condition }}</b><br>
                 <!--Ощущается как {{ PART.feels_like }}&deg<br>-->
                 <!--Давление {{ PART.pressure_mm }} мм рт.ст.<br>-->

@@ -28,8 +28,15 @@ def read_config():
 CONFIG = read_config()
 
 
+def read_api_key():
+    key_file = "api_key.yml"
+    with open(key_file, "r") as filo:
+        config = yaml.load(filo)
+    return config["key"]
+
+
 def get_weather():
-    headers = {"X-Yandex-API-Key": CONFIG["yandex"]["key"]}
+    headers = {"X-Yandex-API-Key": read_api_key()}
     payload = {"lang": "en_US"}
     payload.update(CONFIG["yandex"]["coordinates"])
     # get data

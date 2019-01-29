@@ -4,8 +4,6 @@ files:
   weather_json_file: srs/json/resp_last.json
 
 yandex:
-  # https://developer.tech.yandex.ru
-  key: ...
   # coordinates of place
   coordinates:
     lat: 56.284_127
