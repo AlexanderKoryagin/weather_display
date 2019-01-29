@@ -3,6 +3,7 @@ Show weather forecast for displaying on Raspberry Pi 3 display.
 
 
 ## Rendered page should looks like:
+_(It is in Russian)_
 ![PageView](./img/weather_display_page_rendered.png)
 
 
