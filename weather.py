@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import calendar
 import json
 from datetime import datetime
 from time import sleep
