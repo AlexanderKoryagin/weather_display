@@ -41,9 +41,9 @@
     function prepareDate()
     {
         var d = new Date();
-        var hours = d.getHours();
-        var minutes = d.getMinutes();
-        var seconds = d.getSeconds();
+        // var hours = d.getHours();
+        // var minutes = d.getMinutes();
+        // var seconds = d.getSeconds();
         var date = d.getDate();
 
         var weekday_num = d.getDay() + 1;
@@ -74,18 +74,18 @@
         month[12]="Декабря";
         var month_human = month[month_num];
 
-        if(hours < 10)
-        {
-            hours = '0' + hours;
-        }
-        if(minutes < 10)
-        {
-            minutes = '0' + minutes;
-        }
-        if(seconds < 10)
-        {
-            seconds = '0' + seconds;
-        }
+        // if(hours < 10)
+        // {
+        //     hours = '0' + hours;
+        // }
+        // if(minutes < 10)
+        // {
+        //     minutes = '0' + minutes;
+        // }
+        // if(seconds < 10)
+        // {
+        //     seconds = '0' + seconds;
+        // }
 
         document.getElementById('timedisplay').innerHTML =
             // "<div class='time'>" + hours + ':' + minutes + ':' + seconds + "</div>"
@@ -107,21 +107,26 @@
         </tr>
         <tr align="center">
             <td colspan="2" rowspan="1">
-                <img style="width: 70px; height: 70px;" alt="weather_icon" src="{{ WEATHER_CURRENT.icon }}"><br>
-                <b>{{ WEATHER_CURRENT.condition }}, {{ WEATHER_CURRENT.temp }}&deg</b><br>
+                <img style="width: 70px; height: 70px;" alt="weather_icon" src="{{ WEATHER_CURRENT.icon }}">&nbsp;
+                <span style="font-size:60px;">{{ WEATHER_CURRENT.temp }}&deg</span>&nbsp;
+                <span style="font-weight: bold; font-size:30px">{{ WEATHER_CURRENT.condition }}</span>
+                <br>
                 Ощущается как {{ WEATHER_CURRENT.feels_like }}&deg<br>
                 Давление {{ WEATHER_CURRENT.pressure_mm }} мм рт.ст.<br>
                 Влажность {{ WEATHER_CURRENT.humidity }} %<br>
                 Ветер {{ WEATHER_CURRENT.wind_speed }} м/с порывами до {{ WEATHER_CURRENT.wind_gust }} м/с, {{ WEATHER_CURRENT.wind_dir }}<br>
                 <small><i>(Обновлено в {{ LAST_UPD.upd_time }})</i></small>
+                <br>
+                <br>
             </td>
         </tr>
         <tr>
         {% for PART in WEATHER_FORECAST.parts %}
             <td>
                 <b>{{ PART.part_name }}</b><br>
-                <img style="width: 50px; height: 50px;" alt="weather_icon" src="{{ PART.icon }}"><br>
-                <b>{{ PART.condition }}, {{ PART.feels_like }}&deg</b><br>
+                <img style="width: 50px; height: 50px;" alt="weather_icon" src="{{ PART.icon }}">&nbsp;
+                <span style="font-size:25px;">{{ PART.feels_like }}&deg</span><br>
+                <b>{{ PART.condition }}</b><br>
                 <!--Ощущается как {{ PART.feels_like }}&deg<br>-->
                 <!--Давление {{ PART.pressure_mm }} мм рт.ст.<br>-->
                 <!--Влажность {{ PART.humidity }} %<br>-->
