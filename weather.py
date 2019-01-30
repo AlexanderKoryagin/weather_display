@@ -53,7 +53,7 @@ def get_weather():
 
 def temp_convert(temp):
     if temp > 0:
-        return f"+{temp}"
+        return "+%s" % temp
     return str(temp)
 
 
@@ -127,7 +127,7 @@ def prepare_weather_forecast(forecast):
         moon_text=translate(forecast["moon_text"], moon_code_map),
         sunrise=forecast["sunrise"],
         sunset=forecast["sunset"],
-        day_length=f"{hours}ч {minutes}мин",
+        day_length="%sч %sмин" % (hours, minutes),
         parts=parts,
     )
     return result
@@ -143,7 +143,7 @@ def main():
         WEATHER_FORECAST=weather_forecast,
         LAST_UPD=prepare_time_last_upd(weather["now"]),
     )
-    print(f"Updated: {datetime.now()}")
+    print("Updated: %s" % datetime.now())
 
 
 if __name__ == "__main__":
