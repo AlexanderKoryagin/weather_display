@@ -44,7 +44,7 @@ def get_weather():
     resp_json = resp.json()
 
     if not resp.ok:
-        raise Exception(f'Can not get "{resp.url}". Reason: {resp.reason} ({resp.status_code})')
+        raise Exception("Can not get {0.url}.\nReason: {0.reason} ({0.status_code})".format(resp))
 
     with open(CONFIG["files"]["weather_json_file"], "w") as fileo:
         fileo.write(json.dumps(resp_json, indent=4, sort_keys=True))

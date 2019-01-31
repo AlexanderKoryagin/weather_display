@@ -9,21 +9,21 @@ _(It is in Russian)_
 
 ## Python virtualenv on Windows
 ```bash
-python -m pip install -U pip
-python -m pip install -U setuptools
-python -m pip install -U virtualenv
+python3 -m pip install -U pip
+python3 -m pip install -U setuptools
+python3 -m pip install -U virtualenv
 
-virtualenv -p python --clear .venv --clear
+virtualenv -p python3 --clear .venv --clear
 source .venv/Scripts/activate
 
-python -m pip install -U -r requirements.txt
+python3 -m pip install -U -r requirements.txt
 ```
 
 
 ## More info:
 https://tech.yandex.ru/weather/doc/dg/concepts/forecast-response-test-docpage
 
-### Ignore API KEY file 
+### Ignore API KEY file changes
 ```bash
 git update-index --assume-unchanged api_key.yml
 ```
